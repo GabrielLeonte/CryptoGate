@@ -1,0 +1,10 @@
+{
+    "servers": {
+        "http": {
+            "port": 80
+        },
+        "socketio": {
+            "port": 8080
+        }
+    }
+}
