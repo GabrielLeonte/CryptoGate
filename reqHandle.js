@@ -3,8 +3,8 @@ const utils = require('./utils');
 
 
 // Define type every type of loading.
-const get = "./routes/http/get/";
-const post = "./routes/http/post/";
+const get = "./routes/get/";
+const post = "./routes/post/";
 const socket = "./events/";
 
 
@@ -34,7 +34,7 @@ function load(type, name, app) {
 					break;
 				case "SOCKET.IO": // Case for Socket.IO events.
 					utils.print(`Loading SOCKET.IO Routes...`);
-					LoadIntoApp("SOCKET", files);
+					LoadIntoApp("SOCKET.IO", files);
 					break;
 				default: // The default case which is not doing anything :D 
 					break; // Actually... it is going out from switch if something is found wrong :D
@@ -63,7 +63,7 @@ function LoadIntoApp(type, files, app) {
 				utils.print(`Route /${element.replace(".js", "")} loaded successfuly as POST method.`);
 			});
 			break;
-		case "SOCKET": // Case for Socket.Io events.
+		case "SOCKET.IO": // Case for Socket.Io events.
 			utils.print("SOCKET.IO events are not loaded because they are still WIP!");
 			break;
 		default: // The default case which is not doing anything :D 

@@ -2,8 +2,10 @@ const Express = require('express');
 const bodyParser = require('body-parser')
 const cors = require('cors');
 const helmet = require('helmet');
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./database/db.sqlite3');
 const config = require('./config.json');
-const utils = require('./utils')
+const utils = require('./utils');
 
 
 // Initializate Express.JS HTTP Server.
@@ -27,6 +29,10 @@ app.use(helmet());
 
 // Import HTTP routes.
 require('./reqHandle').handle(app);
+
+
+// Create Default Tables if they not exists.
+require('./database/setup').handle(db);
 
 
 // Listen on configured port the Express.JS HTTP Server.
